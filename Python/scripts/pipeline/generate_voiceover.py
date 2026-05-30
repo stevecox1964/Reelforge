@@ -10,13 +10,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from paths import project_paths, rel_to_repo
 from fal_runner import run_fal
+from models import resolve_model
 from status import load_manifest, save_manifest, upsert_generation, update_stage, print_stage_card, update_project_stage
 
 
-DEFAULT_MODEL = "xai/tts/v1"
-
-
-def generate(project: str, *, model: str = DEFAULT_MODEL) -> dict:
+def generate(project: str, *, model: str | None = None) -> dict:
+    model = model or resolve_model("voiceover", project)
     pp = project_paths(project)
     if not pp.voiceover_recipe.exists():
         raise FileNotFoundError(f"Voiceover recipe missing: {pp.voiceover_recipe}")
@@ -49,7 +48,8 @@ def generate(project: str, *, model: str = DEFAULT_MODEL) -> dict:
 def _cli() -> int:
     parser = argparse.ArgumentParser(description="Generate voiceover audio.")
     parser.add_argument("project")
-    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--model", default=None,
+                        help="Override the resolved model endpoint for this run.")
     args = parser.parse_args()
     out = generate(args.project, model=args.model)
     pp = project_paths(args.project)

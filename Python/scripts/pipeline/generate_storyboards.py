@@ -11,14 +11,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from paths import project_paths, rel_to_repo
 from fal_runner import run_fal
+from models import resolve_model
 from status import load_manifest, save_manifest, upsert_generation, update_stage, print_stage_card, update_project_stage
 
 
-DEFAULT_MODEL = "fal-ai/flux/schnell"
-
-
-def generate(project: str, *, model: str = DEFAULT_MODEL,
+def generate(project: str, *, model: str | None = None,
              only: list[str] | None = None) -> dict:
+    model = model or resolve_model("storyboards", project)
     pp = project_paths(project)
     if not pp.scene_plan.exists():
         raise FileNotFoundError(f"Scene plan missing: {pp.scene_plan}")
@@ -65,7 +64,8 @@ def generate(project: str, *, model: str = DEFAULT_MODEL,
 def _cli() -> int:
     parser = argparse.ArgumentParser(description="Generate storyboard stills for a project.")
     parser.add_argument("project")
-    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--model", default=None,
+                        help="Override the resolved model endpoint for this run.")
     parser.add_argument("--scene", action="append", help="Limit to specific scene id(s).")
     args = parser.parse_args()
     out = generate(args.project, model=args.model, only=args.scene)

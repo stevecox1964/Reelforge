@@ -413,6 +413,18 @@ body { display: flex; }
 .gate-note { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
 .gate-note-paid { color: var(--amber); font-weight: 500; }
 
+.model-select {
+  width: 100%; font-size: 14px; font-weight: 600; font-family: inherit;
+  color: var(--text); background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: var(--r-xs);
+  padding: 2px 4px; cursor: pointer;
+}
+.model-select:focus { outline: none; border-color: var(--accent); }
+
+.model-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.model-row .gate-lbl { margin-bottom: 0; }
+.model-row .model-select { width: auto; min-width: 160px; }
+
 /* ── job progress ── */
 .job-progress {
   margin: 10px 0; padding: 12px;

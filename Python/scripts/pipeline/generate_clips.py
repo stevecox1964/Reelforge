@@ -11,14 +11,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from paths import project_paths, rel_to_repo
 from fal_runner import run_fal
+from models import resolve_model
 from status import load_manifest, save_manifest, upsert_generation, update_stage, print_stage_card, update_project_stage
 
 
-DEFAULT_MODEL = "fal-ai/kling-video/v3/standard/image-to-video"
-
-
-def generate(project: str, *, model: str = DEFAULT_MODEL,
+def generate(project: str, *, model: str | None = None,
              only: list[str] | None = None) -> dict:
+    model = model or resolve_model("clips", project)
     pp = project_paths(project)
     plan = json.loads(pp.scene_plan.read_text(encoding="utf-8"))
     scenes = plan.get("scenes", [])
@@ -68,7 +67,8 @@ def generate(project: str, *, model: str = DEFAULT_MODEL,
 def _cli() -> int:
     parser = argparse.ArgumentParser(description="Animate stills into clips.")
     parser.add_argument("project")
-    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--model", default=None,
+                        help="Override the resolved model endpoint for this run.")
     parser.add_argument("--scene", action="append")
     args = parser.parse_args()
     out = generate(args.project, model=args.model, only=args.scene)

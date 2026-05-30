@@ -29,11 +29,13 @@ PIPELINE_DIR = PROJECT_ROOT / "Python" / "scripts" / "pipeline"
 sys.path.insert(0, str(PIPELINE_DIR))
 from paths import project_paths, list_projects, slugify  # noqa: E402
 from create_project import create_project as pipeline_create_project, VIDEO_TYPES  # noqa: E402
+from models import load_registry, seed_registry  # noqa: E402
 
 load_dotenv(PROJECT_ROOT / ".env", override=False)
 
 STUDIO_DIR.mkdir(parents=True, exist_ok=True)
 PROJECTS_ROOT.mkdir(parents=True, exist_ok=True)
+seed_registry()
 
 app = FastAPI(title="FAL Video Studio")
 app.mount("/studio", StaticFiles(directory=WEB_ROOT, html=True), name="studio")
@@ -65,6 +67,11 @@ class ScenePlanRequest(BaseModel):
 
 class CloneRequest(BaseModel):
     new_name: str = Field(min_length=1)
+
+
+class ModelSelection(BaseModel):
+    stage: str
+    model: str  # registry key, e.g. "gpt-image-2"
 
 
 def _rel(path: Path) -> str:
@@ -124,6 +131,7 @@ def _project_summary(name: str) -> dict[str, Any]:
         "approval_status": manifest.get("approval_status"),
         "created_at": cfg.get("created_at") or manifest.get("created_at"),
         "updated_at": mtime,
+        "models": cfg.get("models") or {},
     }
 
 
@@ -357,6 +365,32 @@ def save_scene_plan(project: str, data: ScenePlanRequest) -> dict[str, Any]:
     plan["scenes"] = data.scenes
     _write_json(pp.scene_plan, plan)
     return {"ok": True, "scene_plan": _rel(pp.scene_plan)}
+
+
+@app.get("/api/models")
+def get_models() -> dict[str, Any]:
+    """The global model registry: stages -> {default, models}."""
+    return load_registry()
+
+
+@app.put("/api/projects/{project}/models")
+def set_project_model(project: str, data: ModelSelection) -> dict[str, Any]:
+    """Set a per-project model override for one stage. Validates against the registry."""
+    pp = project_paths(project)
+    if not pp.config.exists():
+        raise HTTPException(status_code=404, detail="Project not found")
+    stages = load_registry().get("stages", {})
+    if data.stage not in stages:
+        raise HTTPException(status_code=400, detail=f"Unknown stage '{data.stage}'")
+    if data.model not in stages[data.stage].get("models", {}):
+        raise HTTPException(status_code=400,
+                            detail=f"Unknown model '{data.model}' for stage '{data.stage}'")
+    cfg = _read_json(pp.config, {})
+    models = cfg.get("models") or {}
+    models[data.stage] = data.model
+    cfg["models"] = models
+    _write_json(pp.config, cfg)
+    return {"ok": True, "models": models}
 
 
 @app.post("/api/projects/{project}/stages/{stage}/run")

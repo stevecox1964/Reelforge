@@ -21,11 +21,13 @@ const put  = (path, body) => api(path, { method: "PUT",  body: JSON.stringify(bo
 // ── state ────────────────────────────────────────────────────────────────────
 
 const S = {
-  project:    null,
-  manifest:   null,
-  scenePlan:  [],
-  step:       1,
-  jobs:       {},      // stage -> jobId
+  project:       null,
+  manifest:      null,
+  scenePlan:     [],
+  step:          1,
+  jobs:          {},   // stage -> jobId
+  models:        null, // global registry: { stages: { storyboards: {...}, ... } }
+  projectModels: {},   // per-project override: { storyboards: "gpt-image-2", ... }
 };
 
 const sceneId = (sc, i) => sc.id || sc.scene_id || `scene_${String(i + 1).padStart(3, "0")}`;
@@ -70,7 +72,7 @@ function advanceTo(n) {
 // ── start over ───────────────────────────────────────────────────────────────
 
 function resetAll() {
-  Object.assign(S, { project: null, manifest: null, scenePlan: [], step: 1, jobs: {} });
+  Object.assign(S, { project: null, manifest: null, scenePlan: [], step: 1, jobs: {}, projectModels: {} });
 
   for (let i = 1; i <= 5; i++) setCardState(i, i === 1 ? "active" : "locked");
   for (let i = 1; i <= 4; i++) setConnector(i, false);
@@ -226,9 +228,10 @@ async function submitConcept() {
       target_duration_seconds: duration, voiceover: true,
     });
 
-    S.project   = detail.project;
-    S.manifest  = detail.manifest || {};
-    S.scenePlan = detail.scene_plan?.scenes || [];
+    S.project       = detail.project;
+    S.manifest      = detail.manifest || {};
+    S.scenePlan     = detail.scene_plan?.scenes || [];
+    S.projectModels = detail.models || {};
 
     setSummary(1, `${idea.slice(0, 52)}${idea.length > 52 ? "…" : ""} · ${duration}s · ${aspectRatio}`);
     advanceTo(2);
@@ -377,18 +380,60 @@ async function approvePlan() {
   }
 }
 
+// ── model selection ────────────────────────────────────────────────────────
+
+async function loadModels() {
+  try {
+    S.models = await get("/api/models");
+  } catch (e) {
+    console.error("loadModels", e);
+    S.models = { stages: {} };
+  }
+}
+
+// A <select> of the models available for a stage, with the project's current
+// choice (or the registry default) preselected. Falls back to plain text if the
+// registry hasn't loaded yet.
+function modelSelectHTML(stage) {
+  const entry = S.models?.stages?.[stage];
+  if (!entry) return `<span class="gate-val">—</span>`;
+  const current = S.projectModels?.[stage] || entry.default;
+  const opts = Object.entries(entry.models).map(([key, spec]) =>
+    `<option value="${esc(key)}"${key === current ? " selected" : ""}>${esc(spec.label || key)}</option>`
+  ).join("");
+  return `<select class="model-select" data-stage="${esc(stage)}">${opts}</select>`;
+}
+
+async function onModelChange(e) {
+  const sel = e.target;
+  if (!S.project) return;
+  try {
+    const r = await put(`/api/projects/${S.project}/models`, { stage: sel.dataset.stage, model: sel.value });
+    S.projectModels = r.models;
+  } catch (err) {
+    alert(`Could not set model: ${err.message}`);
+  }
+}
+
+function attachModelSelects(rootId) {
+  document.getElementById(rootId)?.querySelectorAll(".model-select").forEach(sel => {
+    sel.addEventListener("change", onModelChange);
+  });
+}
+
 // ── card 3: storyboards ──────────────────────────────────────────────────────
 
 function renderStoryboardGate() {
   const aspect = S.manifest?.aspect_ratio || "16:9";
   const count  = S.scenePlan.length;
   document.getElementById("storyboard-gate").innerHTML = `
-    <div class="gate-item"><div class="gate-lbl">Model</div><div class="gate-val">Flux Schnell</div></div>
+    <div class="gate-item"><div class="gate-lbl">Model</div>${modelSelectHTML("storyboards")}</div>
     <div class="gate-item"><div class="gate-lbl">Type</div><div class="gate-val">Text → Image</div></div>
     <div class="gate-item"><div class="gate-lbl">Count</div><div class="gate-val">${count} stills</div></div>
     <div class="gate-item"><div class="gate-lbl">Aspect</div><div class="gate-val">${aspect}</div></div>
     <p class="gate-note" style="grid-column:span 4">Cheap stills first; approve before paying for clips.</p>
   `;
+  attachModelSelects("storyboard-gate");
 }
 
 async function generateStoryboards() {
@@ -447,12 +492,13 @@ function renderClipsGate() {
   const count    = S.scenePlan.length;
   const totalSec = S.scenePlan.reduce((s, sc) => s + (sc.duration_seconds || 4), 0);
   document.getElementById("clips-gate").innerHTML = `
-    <div class="gate-item"><div class="gate-lbl">Model</div><div class="gate-val">Kling V3</div></div>
+    <div class="gate-item"><div class="gate-lbl">Model</div>${modelSelectHTML("clips")}</div>
     <div class="gate-item"><div class="gate-lbl">Type</div><div class="gate-val">Image → Video</div></div>
     <div class="gate-item"><div class="gate-lbl">Clips</div><div class="gate-val">${count} clips</div></div>
     <div class="gate-item"><div class="gate-lbl">Total</div><div class="gate-val">~${totalSec}s</div></div>
     <p class="gate-note gate-note-paid" style="grid-column:span 4">Most expensive stage. Approve storyboards above first.</p>
   `;
+  attachModelSelects("clips-gate");
 }
 
 async function generateClips() {
@@ -512,6 +558,7 @@ async function renderComplete() {
   document.getElementById("complete-content").innerHTML = `
     <div class="complete-stage">
       <h3 class="complete-stage-title">Voiceover</h3>
+      <div class="model-row"><span class="gate-lbl">Model</span>${modelSelectHTML("voiceover")}</div>
       <div class="job-progress" id="vo-progress" style="display:none"></div>
       <div id="vo-media" class="media-grid"></div>
       <div class="card-actions" id="vo-actions"></div>
@@ -527,6 +574,7 @@ async function renderComplete() {
     </div>
   `;
   document.getElementById("btn-refresh-complete").addEventListener("click", () => renderComplete());
+  attachModelSelects("complete-content");
 
   renderMedia("vo-media", audio);
   renderMedia("rv-media", review);
@@ -739,9 +787,10 @@ async function refreshProjectList() {
 async function loadExistingProject(slug) {
   try {
     const detail = await get(`/api/projects/${slug}`);
-    S.project   = slug;
-    S.manifest  = detail.manifest || {};
-    S.scenePlan = detail.scene_plan?.scenes || [];
+    S.project       = slug;
+    S.manifest      = detail.manifest || {};
+    S.scenePlan     = detail.scene_plan?.scenes || [];
+    S.projectModels = detail.models || {};
 
     for (let i = 1; i <= 5; i++) setCardState(i, "locked");
     for (let i = 1; i <= 4; i++) setConnector(i, false);
@@ -871,8 +920,9 @@ function initProgressTrack() {
   });
 }
 
-function init() {
+async function init() {
   checkHealth();
+  await loadModels();
   refreshProjectList();
   initConceptCard();
   initScenePlanCard();
