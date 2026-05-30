@@ -1,6 +1,6 @@
-# Codex Video Engine
+# Reelforge
 
-A FAL-powered video generation workspace with a local web studio. Each project lives in its own folder under `Projects/<name>/` and walks through the same 5-step pipeline:
+A FAL-powered orchestration engine for short (20–30s) videos, with a local web studio. Each project lives in its own folder under `Projects/<name>/` and walks through the same 5-step pipeline:
 
 ```
 idea → scene plan → storyboards → clips → review cut
