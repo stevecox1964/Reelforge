@@ -28,10 +28,12 @@ build/
 *.log
 logs/
 
-# Generated media outputs
-Docs/MediaGeneration/outputs/**
-!Docs/MediaGeneration/outputs/**/
-!Docs/MediaGeneration/outputs/**/.gitkeep
+# Generated media outputs (per-project)
+Projects/*/outputs/**
+Projects/*/fal_results/**
+
+# Studio runtime state
+.studio/
 
 # OS / editor noise
 .DS_Store

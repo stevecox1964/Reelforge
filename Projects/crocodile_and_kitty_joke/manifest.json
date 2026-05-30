@@ -1,0 +1,64 @@
+{
+  "project": "crocodile_and_kitty_joke",
+  "created_at": "2026-05-08T00:16:39.605447+00:00",
+  "video_type": null,
+  "aspect_ratio": null,
+  "target_duration_seconds": null,
+  "platforms": null,
+  "approval_status": "draft",
+  "voiceover_script": null,
+  "checklist": [],
+  "review_outputs": [],
+  "generations": [
+    {
+      "scene_id": "scene_001",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/crocodile_and_kitty_joke/recipes/storyboards/scene_001.json",
+      "output_json": "",
+      "media_files": [],
+      "notes": "",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/crocodile_and_kitty_joke/recipes/storyboards/scene_002.json",
+      "output_json": "",
+      "media_files": [],
+      "notes": "",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/crocodile_and_kitty_joke/recipes/storyboards/scene_003.json",
+      "output_json": "",
+      "media_files": [],
+      "notes": "",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/crocodile_and_kitty_joke/recipes/storyboards/scene_004.json",
+      "output_json": "",
+      "media_files": [],
+      "notes": "",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/crocodile_and_kitty_joke/recipes/storyboards/scene_005.json",
+      "output_json": "",
+      "media_files": [],
+      "notes": "",
+      "decision": "pending"
+    }
+  ]
+}

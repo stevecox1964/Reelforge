@@ -1,0 +1,7 @@
+{
+  "prompt": "Preserve the input image exactly. Bold text punches onto screen with kinetic impact energy. Subtle glow pulses rhythmically on the phone screen. Slight slow camera push in toward the phone. High-energy short-form social video opening hook. Stable composition, no character distortion.",
+  "duration": "5",
+  "aspect_ratio": "9:16",
+  "generate_audio": false,
+  "negative_prompt": "blur, distortion, warped text, logos, watermark, flicker, low quality, shaky, unstable"
+}

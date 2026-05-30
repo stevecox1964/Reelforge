@@ -1,0 +1,77 @@
+{
+  "project": "robot_builds_a_friend",
+  "idea": "A lonely robot builds another robot to make a friend",
+  "video_type": "animated_story",
+  "aspect_ratio": "16:9",
+  "target_duration_seconds": 20,
+  "character_continuity": "Small lonely inventor robot with warm amber eyes, brushed metal body, careful hands, and a gentle expressive face. The second robot is smaller, newly built, with soft blue eyes and simple rounded parts.",
+  "setting_continuity": "Cozy moonlit repair workshop filled with spare parts, hanging tools, soft workbench lamps, rain-streaked windows, and warm family-friendly atmosphere.",
+  "tone_continuity": "Tender, hopeful, whimsical 3D animated short with soft cinematic lighting, readable emotions, no text, no logos, no watermark.",
+  "scenes": [
+    {
+      "id": "scene_001",
+      "duration_seconds": 4,
+      "purpose": "hook",
+      "story_beat": "The lonely robot notices it has no one to share the workshop with.",
+      "visual": "A small lonely inventor robot sits at a cluttered workbench in a cozy moonlit repair workshop, looking at two empty stools beside it while rain glows on the window.",
+      "camera_motion": "slow gentle push in toward the robot's expressive amber eyes",
+      "style_notes": "tender cinematic 3D animation, warm workbench lamp, blue moonlight through rainy window, family-friendly, no text, no logos, no watermark",
+      "voiceover": "Every night, one little robot fixed everything in the workshop, except its own lonely heart.",
+      "on_screen_text": "",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_002",
+      "duration_seconds": 4,
+      "purpose": "setup",
+      "story_beat": "The robot carefully builds a second robot from spare parts.",
+      "visual": "The inventor robot gently assembles a smaller companion robot from rounded spare parts, polishing a tiny metal hand under warm workbench light.",
+      "camera_motion": "small sideways dolly across tools, gears, and the half-built friend",
+      "style_notes": "cozy detailed workshop, polished but handmade robot parts, tender concentration, consistent inventor robot, no text, no logos, no watermark",
+      "voiceover": "So it gathered bolts, wires, and courage, and began building someone to say hello to.",
+      "on_screen_text": "",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_003",
+      "duration_seconds": 4,
+      "purpose": "turn",
+      "story_beat": "The new robot wakes up for the first time.",
+      "visual": "The smaller newly built robot opens soft blue eyes for the first time, a gentle spark of light reflecting in the inventor robot's amazed face.",
+      "camera_motion": "quick soft reveal from the inventor robot's hands to the new robot's glowing eyes",
+      "style_notes": "magical but grounded workshop lighting, gentle spark, emotional close-up, consistent two robot designs, no text, no logos, no watermark",
+      "voiceover": "At last, a small blue light blinked back at it.",
+      "on_screen_text": "",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_004",
+      "duration_seconds": 4,
+      "purpose": "resolution",
+      "story_beat": "The two robots awkwardly learn how to connect.",
+      "visual": "The two robots sit facing each other on the workshop floor, shyly offering matching metal hands while scattered spare parts form a heart-like shape nearby.",
+      "camera_motion": "slow warm arc around the two robots as their hands meet",
+      "style_notes": "sweet awkward friendship moment, soft warm light, expressive eyes, no readable text, no logos, no watermark",
+      "voiceover": "They did not know how friendship worked, so they started with one tiny hand.",
+      "on_screen_text": "",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_005",
+      "duration_seconds": 4,
+      "purpose": "ending",
+      "story_beat": "The robots share the morning together, no longer alone.",
+      "visual": "At sunrise, the two small robots sit side by side on the workbench, sharing a glowing battery lantern and watching golden light fill the cozy workshop.",
+      "camera_motion": "slow cinematic pull back to reveal the whole warm workshop around them",
+      "style_notes": "hopeful ending, golden sunrise, cozy workshop, two consistent robot friends, family-friendly, no text, no logos, no watermark",
+      "voiceover": "By morning, the workshop was still full of spare parts, but now it was also full of friendship.",
+      "on_screen_text": "",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    }
+  ]
+}

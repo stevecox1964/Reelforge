@@ -1,0 +1,7 @@
+{
+  "prompt": "Preserve the input image exactly. Creator speaks directly to camera with confident warm energy. Subtle natural breathing motion. Text overlay pulses gently for emphasis. Soft background gradient shifts slightly. Clean talking head social video style. Direct, warm, and inviting energy throughout.",
+  "duration": "5",
+  "aspect_ratio": "9:16",
+  "generate_audio": false,
+  "negative_prompt": "blur, distortion, warped text, logos, watermark, flicker, low quality, shaky, unstable"
+}

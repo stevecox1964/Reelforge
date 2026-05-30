@@ -1,0 +1,63 @@
+{
+  "project": "short_animated_film_cat_detective",
+  "idea": "A short animated film about a cat detective solving a cozy mystery",
+  "video_type": "animated_story",
+  "aspect_ratio": "16:9",
+  "target_duration_seconds": 30,
+  "scenes": [
+    {
+      "id": "scene_001",
+      "purpose": "hook",
+      "visual": "A short animated film about a cat detective solving a cozy mystery. Show the hook moment clearly with expressive action and a readable composition.",
+      "camera_motion": "slow controlled push in",
+      "voiceover": "Hook: A short animated film about a cat detective solving a cozy mystery.",
+      "duration_seconds": 5,
+      "style_notes": "cinematic, polished, coherent visual continuity, no text, no logos, no watermark"
+    },
+    {
+      "id": "scene_002",
+      "purpose": "setup",
+      "visual": "A short animated film about a cat detective solving a cozy mystery. Show the setup moment clearly with expressive action and a readable composition.",
+      "camera_motion": "slow controlled push in",
+      "voiceover": "Setup: A short animated film about a cat detective solving a cozy mystery.",
+      "duration_seconds": 5,
+      "style_notes": "cinematic, polished, coherent visual continuity, no text, no logos, no watermark"
+    },
+    {
+      "id": "scene_003",
+      "purpose": "development",
+      "visual": "A short animated film about a cat detective solving a cozy mystery. Show the development moment clearly with expressive action and a readable composition.",
+      "camera_motion": "slow controlled push in",
+      "voiceover": "Development: A short animated film about a cat detective solving a cozy mystery.",
+      "duration_seconds": 5,
+      "style_notes": "cinematic, polished, coherent visual continuity, no text, no logos, no watermark"
+    },
+    {
+      "id": "scene_004",
+      "purpose": "turn",
+      "visual": "A short animated film about a cat detective solving a cozy mystery. Show the turn moment clearly with expressive action and a readable composition.",
+      "camera_motion": "slow controlled push in",
+      "voiceover": "Turn: A short animated film about a cat detective solving a cozy mystery.",
+      "duration_seconds": 5,
+      "style_notes": "cinematic, polished, coherent visual continuity, no text, no logos, no watermark"
+    },
+    {
+      "id": "scene_005",
+      "purpose": "resolution",
+      "visual": "A short animated film about a cat detective solving a cozy mystery. Show the resolution moment clearly with expressive action and a readable composition.",
+      "camera_motion": "slow controlled push in",
+      "voiceover": "Resolution: A short animated film about a cat detective solving a cozy mystery.",
+      "duration_seconds": 5,
+      "style_notes": "cinematic, polished, coherent visual continuity, no text, no logos, no watermark"
+    },
+    {
+      "id": "scene_006",
+      "purpose": "ending",
+      "visual": "A short animated film about a cat detective solving a cozy mystery. Show the ending moment clearly with expressive action and a readable composition.",
+      "camera_motion": "slow controlled push in",
+      "voiceover": "Ending: A short animated film about a cat detective solving a cozy mystery.",
+      "duration_seconds": 5,
+      "style_notes": "cinematic, polished, coherent visual continuity, no text, no logos, no watermark"
+    }
+  ]
+}

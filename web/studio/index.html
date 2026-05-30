@@ -3,168 +3,220 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FAL Video Studio</title>
+    <title>Video Studio</title>
     <link rel="stylesheet" href="/studio/styles.css" />
   </head>
   <body>
-    <div class="app">
-      <aside class="sidebar">
-        <div class="brand">
-          <div class="mark">FV</div>
-          <div>
-            <h1>FAL Video Studio</h1>
-            <p>Local project control panel</p>
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">▶</div>
+        <span class="brand-name">Video Studio</span>
+      </div>
+      <div class="sidebar-health">
+        <span class="health-dot" id="health-dot"></span>
+        <span id="health-label">checking...</span>
+      </div>
+      <div class="sidebar-cta">
+        <button class="btn-new-project" id="btn-new-project">+ New Project</button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-header">
+          <span>Projects</span>
+          <button class="btn-icon" id="btn-refresh-projects" title="Refresh">↻</button>
+        </div>
+        <div class="project-list" id="project-list">
+          <div class="project-empty">No projects yet</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="studio">
+      <header class="studio-header">
+        <div class="progress-track" id="progress-track">
+          <div class="progress-step" data-step="1">
+            <div class="step-dot" id="dot-1"><span>1</span></div>
+            <div class="step-label">Concept</div>
+          </div>
+          <div class="progress-connector" id="conn-1"></div>
+          <div class="progress-step" data-step="2">
+            <div class="step-dot" id="dot-2"><span>2</span></div>
+            <div class="step-label">Scene Plan</div>
+          </div>
+          <div class="progress-connector" id="conn-2"></div>
+          <div class="progress-step" data-step="3">
+            <div class="step-dot" id="dot-3"><span>3</span></div>
+            <div class="step-label">Storyboards</div>
+          </div>
+          <div class="progress-connector" id="conn-3"></div>
+          <div class="progress-step" data-step="4">
+            <div class="step-dot" id="dot-4"><span>4</span></div>
+            <div class="step-label">Clips</div>
+          </div>
+          <div class="progress-connector" id="conn-4"></div>
+          <div class="progress-step" data-step="5">
+            <div class="step-dot" id="dot-5"><span>5</span></div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+        <button class="btn-start-over" id="btn-start-over">Start Over</button>
+      </header>
+
+      <div class="cards-container">
+
+        <!-- Card 1: Concept -->
+        <div class="card" id="card-1" data-state="active">
+          <div class="card-header" id="card-1-header">
+            <div class="card-meta">
+              <div class="card-number" id="card-1-num">1</div>
+              <div class="card-title">Concept</div>
+              <div class="card-summary" id="card-1-summary"></div>
+            </div>
+          </div>
+          <div class="card-body" id="card-1-body">
+
+          <div id="concept-create">
+
+            <div class="field-block">
+              <label class="field-label">What's your video about?</label>
+              <textarea id="thought-input" class="thought-input" rows="3" placeholder="Describe your idea..."></textarea>
+              <div class="chips" id="suggestion-chips">
+                <button class="chip" data-thought="A short animated story about a robot who learns to bake bread" data-type="animated_story">A robot who learns to bake</button>
+                <button class="chip" data-thought="A product demo for a sleek meditation app with calming ambient sounds" data-type="app_demo">Meditation app demo</button>
+                <button class="chip" data-thought="A logo reveal for an artisan coffee brand with warm golden tones" data-type="logo_reveal">Coffee brand logo reveal</button>
+                <button class="chip" data-thought="A short animated film about a cat detective solving a cozy mystery" data-type="animated_story">Cat detective short film</button>
+              </div>
+            </div>
+
+            <div class="field-block">
+              <label class="field-label">Video type</label>
+              <div class="type-tiles" id="type-tiles">
+                <button class="type-tile" data-type="animated_story"><span class="tile-icon">🎬</span><span class="tile-label">Animated Story</span></button>
+                <button class="type-tile" data-type="app_demo"><span class="tile-icon">📱</span><span class="tile-label">App Demo</span></button>
+                <button class="type-tile" data-type="product"><span class="tile-icon">📦</span><span class="tile-label">Product Video</span></button>
+                <button class="type-tile" data-type="logo_reveal"><span class="tile-icon">✨</span><span class="tile-label">Logo Reveal</span></button>
+              </div>
+            </div>
+
+            <div class="concept-row">
+              <div class="field-block">
+                <label class="field-label">Duration</label>
+                <div class="btn-group" id="duration-group">
+                  <button class="btn-toggle" data-value="15">15s</button>
+                  <button class="btn-toggle selected" data-value="20">20s</button>
+                  <button class="btn-toggle" data-value="30">30s</button>
+                  <button class="btn-toggle" data-value="60">60s</button>
+                </div>
+              </div>
+              <div class="field-block">
+                <label class="field-label">Format</label>
+                <div class="btn-group" id="aspect-group">
+                  <button class="btn-toggle selected" data-value="16:9"><span class="ratio-box ratio-16-9"></span>16:9</button>
+                  <button class="btn-toggle" data-value="9:16"><span class="ratio-box ratio-9-16"></span>9:16</button>
+                  <button class="btn-toggle" data-value="1:1"><span class="ratio-box ratio-1-1"></span>1:1</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <button class="btn-primary" id="btn-create-project">Create Project →</button>
+              <span class="action-msg" id="concept-msg"></span>
+            </div>
+
+          </div>
+
+          <div id="concept-view" style="display:none">
+            <dl class="concept-view-grid">
+              <dt>Idea</dt><dd id="cv-idea"></dd>
+              <dt>Type</dt><dd id="cv-type"></dd>
+              <dt>Duration</dt><dd id="cv-duration"></dd>
+              <dt>Aspect</dt><dd id="cv-aspect"></dd>
+              <dt>Created</dt><dd id="cv-created"></dd>
+            </dl>
+            <div class="card-actions">
+              <button class="btn-primary" id="btn-clone-project">Clone Project →</button>
+              <span class="cost-note">Copies brief, scene plan, and recipes. Outputs are not cloned.</span>
+            </div>
+          </div>
+
           </div>
         </div>
 
-        <button id="refreshProjects" class="primary">Refresh</button>
-        <div id="projectList" class="project-list"></div>
-      </aside>
-
-      <main class="workspace">
-        <section class="band header-band">
-          <div>
-            <p class="eyebrow">Pipeline</p>
-            <h2>Checklist-first video generation</h2>
-          </div>
-          <div id="health" class="health">Checking FAL...</div>
-        </section>
-
-        <section class="band">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Fast Start</p>
-              <h3>Create From One Thought</h3>
+        <!-- Card 2: Scene Plan -->
+        <div class="card" id="card-2" data-state="locked">
+          <div class="card-header" id="card-2-header">
+            <div class="card-meta">
+              <div class="card-number" id="card-2-num">2</div>
+              <div class="card-title">Scene Plan</div>
+              <div class="card-summary" id="card-2-summary"></div>
             </div>
           </div>
-          <form id="thoughtForm" class="thought-form">
-            <label class="wide">
-              Video thought
-              <textarea name="thought">A 20 second animated story about a tiny robot baker learning teamwork in a cozy bakery.</textarea>
-            </label>
-            <label>
-              Type
-              <select name="video_type">
-                <option value="auto">Auto detect</option>
-                <option value="product_promo">Product / promo</option>
-                <option value="app_demo">App demo</option>
-                <option value="animated_story">Animated story</option>
-                <option value="explainer">Explainer</option>
-                <option value="logo_reveal">Logo reveal</option>
-                <option value="ambient_music">Ambient / music</option>
-                <option value="smoke_test">Smoke test</option>
-              </select>
-            </label>
-            <label>
-              Duration
-              <input name="target_duration_seconds" type="number" min="4" value="20" />
-            </label>
-            <label>
-              Aspect
-              <select name="aspect_ratio">
-                <option>16:9</option>
-                <option>9:16</option>
-                <option>1:1</option>
-                <option>3:2</option>
-              </select>
-            </label>
-            <button class="primary" type="submit">Create Managed Project</button>
-          </form>
-        </section>
-
-        <section class="band">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Create</p>
-              <h3>Choose a Project Type</h3>
+          <div class="card-body" id="card-2-body">
+            <p class="card-intro">Review and edit your scenes. Each scene becomes a storyboard still, then an animated clip.</p>
+            <div class="scenes-list" id="scenes-list"></div>
+            <div class="card-actions">
+              <button class="btn-primary" id="btn-approve-plan">Approve Plan →</button>
+              <button class="btn-ghost" id="btn-edit-json">Edit as JSON</button>
+              <span class="action-msg" id="plan-msg"></span>
             </div>
           </div>
-          <div id="typeCatalog" class="type-catalog"></div>
-        </section>
+        </div>
 
-        <section class="band">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Intake</p>
-              <h3>New Project Details</h3>
+        <!-- Card 3: Storyboards -->
+        <div class="card" id="card-3" data-state="locked">
+          <div class="card-header" id="card-3-header">
+            <div class="card-meta">
+              <div class="card-number" id="card-3-num">3</div>
+              <div class="card-title">Storyboards</div>
+              <div class="card-summary" id="card-3-summary"></div>
             </div>
-            <div id="selectedType" class="selected-type">No type selected</div>
           </div>
-          <form id="projectForm" class="intake-grid">
-            <label>
-              Name
-              <input name="name" required value="Animated Website Story" />
-            </label>
-            <label>
-              Video type
-              <select name="video_type">
-                <option value="product_promo">Product / promo</option>
-                <option value="app_demo">App demo</option>
-                <option value="animated_story">Animated story</option>
-                <option value="explainer">Explainer</option>
-                <option value="logo_reveal">Logo reveal</option>
-                <option value="ambient_music">Ambient / music</option>
-                <option value="smoke_test">Smoke test</option>
-              </select>
-            </label>
-            <label>
-              Duration
-              <input name="target_duration_seconds" type="number" min="4" value="20" />
-            </label>
-            <label>
-              Aspect ratio
-              <select name="aspect_ratio">
-                <option>16:9</option>
-                <option>9:16</option>
-                <option>1:1</option>
-                <option>3:2</option>
-              </select>
-            </label>
-            <label class="wide">
-              Goal
-              <textarea name="goal">Create a short visual proof for a video idea.</textarea>
-            </label>
-            <label>
-              Audience
-              <input name="audience" value="Small business owners" />
-            </label>
-            <label>
-              Style
-              <input name="style" value="Cinematic, practical, modern" />
-            </label>
-            <label class="check">
-              <input name="voiceover" type="checkbox" checked />
-              Voiceover
-            </label>
-            <label class="wide">
-              Must include
-              <textarea name="must_include"></textarea>
-            </label>
-            <label class="wide">
-              Must avoid
-              <textarea name="must_avoid">Unreadable generated text, logos, watermarks</textarea>
-            </label>
-            <button class="primary" type="submit">Create Project</button>
-          </form>
-        </section>
+          <div class="card-body" id="card-3-body">
+            <div class="gate-grid" id="storyboard-gate"></div>
+            <div class="job-progress" id="storyboard-progress" style="display:none"></div>
+            <div class="media-grid" id="storyboard-media"></div>
+            <div class="card-actions" id="storyboard-actions">
+              <button class="btn-primary" id="btn-gen-storyboards">Generate Storyboards →</button>
+              <span class="cost-note">Text-to-image only · no video cost yet</span>
+            </div>
+          </div>
+        </div>
 
-        <section class="band">
-          <div class="section-head">
-            <h3>Current Project</h3>
-            <button id="reloadProject">Reload Project</button>
+        <!-- Card 4: Clips -->
+        <div class="card" id="card-4" data-state="locked">
+          <div class="card-header" id="card-4-header">
+            <div class="card-meta">
+              <div class="card-number" id="card-4-num">4</div>
+              <div class="card-title">Clips</div>
+              <div class="card-summary" id="card-4-summary"></div>
+            </div>
           </div>
-          <div id="projectDetail" class="project-detail empty">Select or create a project.</div>
-        </section>
+          <div class="card-body" id="card-4-body">
+            <div class="gate-grid" id="clips-gate"></div>
+            <div class="job-progress" id="clips-progress" style="display:none"></div>
+            <div class="media-grid" id="clips-media"></div>
+            <div class="card-actions" id="clips-actions">
+              <button class="btn-primary btn-paid" id="btn-gen-clips">Generate Clips →</button>
+              <span class="cost-note">Paid FAL generation · approve storyboards above first</span>
+            </div>
+          </div>
+        </div>
 
-        <section class="band">
-          <div class="section-head">
-            <h3>Jobs</h3>
-            <button id="refreshJobs">Refresh Jobs</button>
+        <!-- Card 5: Complete -->
+        <div class="card" id="card-5" data-state="locked">
+          <div class="card-header" id="card-5-header">
+            <div class="card-meta">
+              <div class="card-number" id="card-5-num">5</div>
+              <div class="card-title">Complete</div>
+              <div class="card-summary" id="card-5-summary"></div>
+            </div>
           </div>
-          <div id="jobs" class="jobs"></div>
-        </section>
-      </main>
-    </div>
+          <div class="card-body" id="card-5-body">
+            <div id="complete-content"></div>
+          </div>
+        </div>
+
+      </div>
+    </main>
 
     <script src="/studio/app.js"></script>
   </body>

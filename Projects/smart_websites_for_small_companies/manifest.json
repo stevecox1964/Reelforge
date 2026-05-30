@@ -1,0 +1,155 @@
+{
+  "project": "smart_websites_for_small_companies",
+  "created_at": "2026-05-06",
+  "video_type": null,
+  "aspect_ratio": null,
+  "target_duration_seconds": null,
+  "platforms": null,
+  "approval_status": "fal_voiceover_review_cut_generated",
+  "voiceover_script": null,
+  "checklist": [],
+  "review_outputs": [
+    {
+      "type": "raw_concat",
+      "path": "Projects/smart_websites_for_small_companies/outputs/review/review_cut.mp4",
+      "notes": "Direct concat of generated clips."
+    },
+    {
+      "type": "widescreen_review_cut",
+      "path": "Projects/smart_websites_for_small_companies/outputs/review/review_cut_16x9.mp4",
+      "duration_seconds": 20.2,
+      "resolution": "1920x1080",
+      "fps": 24,
+      "notes": "Padded and re-encoded to 16:9 for review."
+    },
+    {
+      "type": "fal_voiceover_review_cut",
+      "path": "Projects/smart_websites_for_small_companies/outputs/review/with_fal_voiceover.mp4",
+      "duration_seconds": 20.2,
+      "resolution": "1920x1080",
+      "fps": 24,
+      "audio": "Projects/smart_websites_for_small_companies/outputs/audio/voiceover.mp3",
+      "notes": "Widescreen review cut with FAL xAI TTS voiceover mixed in."
+    }
+  ],
+  "generations": [
+    {
+      "scene_id": "voiceover",
+      "mode": "text_to_speech",
+      "model": "xai/tts/v1",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/voiceover.json",
+      "output_json": "Projects/smart_websites_for_small_companies/fal_results/fal_result_20260506_210131.json",
+      "media_files": [
+        "Projects/smart_websites_for_small_companies/outputs/audio/voiceover.mp3",
+        "Projects/smart_websites_for_small_companies/outputs/audio/voiceover_matched.mp3"
+      ],
+      "notes": "FAL TTS voiceover generated, then tempo-matched and normalized to fit the 20.2-second review cut.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_001",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/storyboards/scene_001.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_204809.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting approval for image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/storyboards/scene_002.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_204812.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting approval for image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/storyboards/scene_003.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_204815.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting approval for image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/storyboards/scene_004.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_204816.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting approval for image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/storyboards/scene_005.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_204818.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting approval for image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_001",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/image_to_video/scene_001.json",
+      "source_image": "fal_output_20260506_204810_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_205055.json",
+      "media_files": [],
+      "notes": "4-second clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/image_to_video/scene_002.json",
+      "source_image": "fal_output_20260506_204813_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_205144.json",
+      "media_files": [],
+      "notes": "4-second clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/image_to_video/scene_003.json",
+      "source_image": "fal_output_20260506_204816_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_205237.json",
+      "media_files": [],
+      "notes": "4-second clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/image_to_video/scene_004.json",
+      "source_image": "fal_output_20260506_204817_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_205337.json",
+      "media_files": [],
+      "notes": "4-second clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/smart_websites_for_small_companies/recipes/image_to_video/scene_005.json",
+      "source_image": "fal_output_20260506_204819_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_205435.json",
+      "media_files": [],
+      "notes": "4-second clip generated from approved storyboard still.",
+      "decision": "pending"
+    }
+  ]
+}

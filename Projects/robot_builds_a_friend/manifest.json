@@ -1,0 +1,208 @@
+{
+  "project": "robot_builds_a_friend",
+  "created_at": "2026-05-09T03:52:50.049950+00:00",
+  "video_type": "animated_story",
+  "aspect_ratio": null,
+  "target_duration_seconds": null,
+  "platforms": null,
+  "approval_status": "fal_voiceover_review_cut_generated",
+  "voiceover_script": null,
+  "checklist": [
+    {
+      "label": "Video type selected",
+      "done": true
+    },
+    {
+      "label": "Intake complete",
+      "done": true
+    },
+    {
+      "label": "Brief created",
+      "done": true
+    },
+    {
+      "label": "Scene plan created",
+      "done": true
+    },
+    {
+      "label": "Storyboard generation approved",
+      "done": true
+    },
+    {
+      "label": "Storyboard stills generated",
+      "done": true
+    },
+    {
+      "label": "Stills approved or revised",
+      "done": true
+    },
+    {
+      "label": "Video clip generation approved",
+      "done": true
+    },
+    {
+      "label": "Video clips generated",
+      "done": true
+    },
+    {
+      "label": "Voiceover script approved",
+      "done": true
+    },
+    {
+      "label": "FAL voiceover generated",
+      "done": true
+    },
+    {
+      "label": "Review cut assembled",
+      "done": true
+    },
+    {
+      "label": "Manifest updated",
+      "done": true
+    }
+  ],
+  "review_outputs": [
+    {
+      "type": "silent_review_cut",
+      "path": "Projects/robot_builds_a_friend/outputs/review/review.mp4",
+      "duration_seconds": 20.209,
+      "resolution": "1280x720",
+      "fps": 24,
+      "notes": "Concatenated from five image-to-video clips and re-encoded with faststart."
+    },
+    {
+      "type": "fal_voiceover_review_cut",
+      "path": "Projects/robot_builds_a_friend/outputs/review/with_voiceover.mp4",
+      "duration_seconds": 20.209,
+      "resolution": "1280x720",
+      "fps": 24,
+      "audio": "Projects/robot_builds_a_friend/outputs/audio/voiceover.mp3",
+      "notes": "Review cut with FAL xAI TTS voiceover mixed as AAC. Voiceover was tempo-matched from 29.6s to 20.2s."
+    }
+  ],
+  "generations": [
+    {
+      "scene_id": "scene_001",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/robot_builds_a_friend/recipes/storyboards/scene_001.json",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230356.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/stills/scene_001.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/robot_builds_a_friend/recipes/storyboards/scene_002.json",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230358.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/stills/scene_002.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/robot_builds_a_friend/recipes/storyboards/scene_003.json",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230400.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/stills/scene_003.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/robot_builds_a_friend/recipes/storyboards/scene_004.json",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230401.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/stills/scene_004.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/robot_builds_a_friend/recipes/storyboards/scene_005.json",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230403.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/stills/scene_005.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "voiceover",
+      "mode": "text_to_speech",
+      "model": "xai/tts/v1",
+      "recipe": "Projects/robot_builds_a_friend/recipes/voiceover.json",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_231317.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/audio/voiceover.mp3",
+        "Projects/robot_builds_a_friend/outputs/audio/voiceover_matched.mp3"
+      ],
+      "notes": "FAL xAI TTS voiceover generated at 29.6s, then tempo-matched to fit the 20.2s review cut.",
+      "decision": "used_in_review_cut"
+    },
+    {
+      "scene_id": "scene_001",
+      "mode": "image_to_video",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230631.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/clips/scene_001.mp4"
+      ],
+      "notes": "Animated clip generated from approved storyboard still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "image_to_video",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230728.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/clips/scene_002.mp4"
+      ],
+      "notes": "Animated clip generated from approved storyboard still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "image_to_video",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230824.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/clips/scene_003.mp4"
+      ],
+      "notes": "Animated clip generated from approved storyboard still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "image_to_video",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_230919.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/clips/scene_004.mp4"
+      ],
+      "notes": "Animated clip generated from approved storyboard still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "image_to_video",
+      "output_json": "Projects/robot_builds_a_friend/fal_results/fal_result_20260508_231027.json",
+      "media_files": [
+        "Projects/robot_builds_a_friend/outputs/clips/scene_005.mp4"
+      ],
+      "notes": "Animated clip generated from approved storyboard still.",
+      "decision": "pending_review"
+    }
+  ]
+}

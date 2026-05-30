@@ -1,0 +1,203 @@
+{
+  "project": "tiny_robot_baker",
+  "created_at": "2026-05-06",
+  "video_type": "animated_story",
+  "aspect_ratio": null,
+  "target_duration_seconds": null,
+  "platforms": null,
+  "approval_status": "fal_voiceover_review_cut_generated",
+  "voiceover_script": null,
+  "checklist": [
+    {
+      "label": "Video type selected",
+      "done": true
+    },
+    {
+      "label": "Intake complete",
+      "done": true
+    },
+    {
+      "label": "Brief created",
+      "done": true
+    },
+    {
+      "label": "Scene plan created",
+      "done": true
+    },
+    {
+      "label": "Storyboard generation approved",
+      "done": true
+    },
+    {
+      "label": "Storyboard stills generated",
+      "done": true
+    },
+    {
+      "label": "Stills approved or revised",
+      "done": true
+    },
+    {
+      "label": "Video clip generation approved",
+      "done": true
+    },
+    {
+      "label": "Video clips generated",
+      "done": true
+    },
+    {
+      "label": "Voiceover script approved",
+      "done": true
+    },
+    {
+      "label": "FAL voiceover generated",
+      "done": true
+    },
+    {
+      "label": "Review cut assembled",
+      "done": true
+    },
+    {
+      "label": "Manifest updated",
+      "done": true
+    }
+  ],
+  "review_outputs": [
+    {
+      "type": "widescreen_review_cut",
+      "path": "Projects/tiny_robot_baker/outputs/review/review_cut_16x9.mp4",
+      "duration_seconds": 20.2,
+      "resolution": "1920x1080",
+      "fps": 24,
+      "notes": "Padded and re-encoded 16:9 review cut assembled from five image-to-video clips. No voiceover yet."
+    },
+    {
+      "type": "fal_voiceover_review_cut",
+      "path": "Projects/tiny_robot_baker/outputs/review/with_fal_voiceover.mp4",
+      "duration_seconds": 20.2,
+      "resolution": "1920x1080",
+      "fps": 24,
+      "audio": "Projects/tiny_robot_baker/outputs/audio/voiceover.mp3",
+      "notes": "Review cut with FAL xAI TTS voiceover mixed in."
+    }
+  ],
+  "generations": [
+    {
+      "scene_id": "scene_001",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/tiny_robot_baker/recipes/storyboards/scene_001.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_220446.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/tiny_robot_baker/recipes/storyboards/scene_002.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_220449.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/tiny_robot_baker/recipes/storyboards/scene_003.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_220450.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/tiny_robot_baker/recipes/storyboards/scene_004.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_220452.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/tiny_robot_baker/recipes/storyboards/scene_005.json",
+      "output_json": "Docs/MediaGeneration/outputs/text_to_image/fal_result_20260506_220454.json",
+      "media_files": [],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_001",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/tiny_robot_baker/recipes/image_to_video/scene_001.json",
+      "source_image": "fal_output_20260506_220447_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_220721.json",
+      "media_files": [],
+      "notes": "4-second animated clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/tiny_robot_baker/recipes/image_to_video/scene_002.json",
+      "source_image": "fal_output_20260506_220449_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_220829.json",
+      "media_files": [],
+      "notes": "4-second animated clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/tiny_robot_baker/recipes/image_to_video/scene_003.json",
+      "source_image": "fal_output_20260506_220451_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_220922.json",
+      "media_files": [],
+      "notes": "4-second animated clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/tiny_robot_baker/recipes/image_to_video/scene_004.json",
+      "source_image": "fal_output_20260506_220453_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_221039.json",
+      "media_files": [],
+      "notes": "4-second animated clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/tiny_robot_baker/recipes/image_to_video/scene_005.json",
+      "source_image": "fal_output_20260506_220454_01.jpg",
+      "output_json": "Docs/MediaGeneration/outputs/image_to_video/fal_result_20260506_221146.json",
+      "media_files": [],
+      "notes": "4-second animated clip generated from approved storyboard still.",
+      "decision": "pending"
+    },
+    {
+      "scene_id": "voiceover",
+      "mode": "text_to_speech",
+      "model": "xai/tts/v1",
+      "recipe": "Projects/tiny_robot_baker/recipes/voiceover.json",
+      "output_json": "Projects/tiny_robot_baker/fal_results/fal_result_20260506_221629.json",
+      "media_files": [
+        "Projects/tiny_robot_baker/outputs/audio/voiceover.mp3",
+        "Projects/tiny_robot_baker/outputs/audio/voiceover_matched.mp3"
+      ],
+      "notes": "FAL TTS voiceover generated at 26.2s, then tempo-matched and normalized to fit 20.2s review cut.",
+      "decision": "pending"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "prompt": "Preserve the input image exactly. Floating badge labels drift in gently from off-screen surrounding the frustrated person. Slow cinematic push in toward the subject. Text overlay fades in with emphasis. Warm ambient light subtly shifts and pulses. Relatable B-roll social media feel, empathetic tone.",
+  "duration": "5",
+  "aspect_ratio": "9:16",
+  "generate_audio": false,
+  "negative_prompt": "blur, distortion, warped text, logos, watermark, flicker, low quality, shaky, unstable"
+}

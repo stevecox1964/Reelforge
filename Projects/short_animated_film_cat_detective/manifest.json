@@ -1,0 +1,225 @@
+{
+  "project": "short_animated_film_cat_detective",
+  "created_at": "2026-05-28T05:24:37.426816+00:00",
+  "video_type": "animated_story",
+  "aspect_ratio": "16:9",
+  "target_duration_seconds": 30,
+  "approval_status": "review_cut_complete",
+  "idea": "A short animated film about a cat detective solving a cozy mystery",
+  "checklist": [
+    {
+      "label": "Scene plan created",
+      "done": false
+    },
+    {
+      "label": "Scene plan approved",
+      "done": true
+    },
+    {
+      "label": "Storyboard stills generated",
+      "done": true
+    },
+    {
+      "label": "Stills approved",
+      "done": true
+    },
+    {
+      "label": "Video clips generated",
+      "done": true
+    },
+    {
+      "label": "Clips approved",
+      "done": true
+    },
+    {
+      "label": "Voiceover generated",
+      "done": true
+    },
+    {
+      "label": "Voiceover approved",
+      "done": true
+    },
+    {
+      "label": "Review cut assembled",
+      "done": true
+    },
+    {
+      "label": "Final cut approved",
+      "done": false
+    }
+  ],
+  "review_outputs": [
+    {
+      "type": "review_cut",
+      "path": "Projects/short_animated_film_cat_detective/outputs/review/review_cut.mp4",
+      "duration_seconds": 30.252,
+      "audio": "Projects/short_animated_film_cat_detective/outputs/audio/voiceover.mp3",
+      "voiceover_speed": 1.086870289567632,
+      "notes": "Review cut with voiceover at speed 1.0869x."
+    }
+  ],
+  "generations": [
+    {
+      "scene_id": "scene_001",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/storyboards/scene_001.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002459.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/stills/scene_001.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/storyboards/scene_002.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002500.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/stills/scene_002.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/storyboards/scene_003.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002502.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/stills/scene_003.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/storyboards/scene_004.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002504.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/stills/scene_004.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/storyboards/scene_005.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002505.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/stills/scene_005.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_006",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/storyboards/scene_006.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002507.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/stills/scene_006.jpg"
+      ],
+      "notes": "Storyboard still generated; awaiting review before image-to-video.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_001",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/image_to_video/scene_001.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002532.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/clips/scene_001.mp4"
+      ],
+      "source_image": "Projects/short_animated_film_cat_detective/outputs/stills/scene_001.jpg",
+      "notes": "Animated clip generated from approved still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/image_to_video/scene_002.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002749.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/clips/scene_002.mp4"
+      ],
+      "source_image": "Projects/short_animated_film_cat_detective/outputs/stills/scene_002.jpg",
+      "notes": "Animated clip generated from approved still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/image_to_video/scene_003.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002850.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/clips/scene_003.mp4"
+      ],
+      "source_image": "Projects/short_animated_film_cat_detective/outputs/stills/scene_003.jpg",
+      "notes": "Animated clip generated from approved still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/image_to_video/scene_004.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_002944.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/clips/scene_004.mp4"
+      ],
+      "source_image": "Projects/short_animated_film_cat_detective/outputs/stills/scene_004.jpg",
+      "notes": "Animated clip generated from approved still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_005",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/image_to_video/scene_005.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_003114.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/clips/scene_005.mp4"
+      ],
+      "source_image": "Projects/short_animated_film_cat_detective/outputs/stills/scene_005.jpg",
+      "notes": "Animated clip generated from approved still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "scene_006",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v3/standard/image-to-video",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/image_to_video/scene_006.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_003305.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/clips/scene_006.mp4"
+      ],
+      "source_image": "Projects/short_animated_film_cat_detective/outputs/stills/scene_006.jpg",
+      "notes": "Animated clip generated from approved still.",
+      "decision": "pending_review"
+    },
+    {
+      "scene_id": "voiceover",
+      "mode": "text_to_speech",
+      "model": "xai/tts/v1",
+      "recipe": "Projects/short_animated_film_cat_detective/recipes/voiceover.json",
+      "output_json": "Projects/short_animated_film_cat_detective/fal_results/fal_result_20260528_005851.json",
+      "media_files": [
+        "Projects/short_animated_film_cat_detective/outputs/audio/voiceover.mp3"
+      ],
+      "notes": "Voiceover audio generated.",
+      "decision": "pending_review"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "prompt": "Preserve the input image exactly. YES comment bubbles animate in one by one from bottom of comment section with satisfying pop timing. DM notification card slides in smoothly from right edge of frame. URL text hephosnexa.com fades in boldly at bottom with a subtle glow. Energetic fast-paced social CTA motion. Clean, punchy, high-energy closing.",
+  "duration": "5",
+  "aspect_ratio": "9:16",
+  "generate_audio": false,
+  "negative_prompt": "blur, distortion, warped text, logos, watermark, flicker, low quality, shaky, unstable"
+}

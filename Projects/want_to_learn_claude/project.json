@@ -1,0 +1,14 @@
+{
+  "project": "want_to_learn_claude",
+  "video_type": "explainer",
+  "aspect_ratio": "9:16",
+  "target_duration_seconds": 20,
+  "platforms": [
+    "instagram",
+    "facebook",
+    "tiktok",
+    "linkedin"
+  ],
+  "created_at": "2026-05-15",
+  "current_stage": "complete"
+}

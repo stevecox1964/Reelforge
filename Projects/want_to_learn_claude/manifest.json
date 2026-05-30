@@ -1,0 +1,197 @@
+{
+  "project": "want_to_learn_claude",
+  "created_at": "2026-05-15",
+  "video_type": "explainer",
+  "aspect_ratio": "9:16",
+  "target_duration_seconds": 20,
+  "platforms": [
+    "instagram",
+    "facebook",
+    "tiktok",
+    "linkedin"
+  ],
+  "approval_status": "review_cut_complete",
+  "voiceover_script": "Do you want to learn Claude Code? Because if you don't know what it is yet \u2014 you need to. 99% of the content out there about Claude is made for coders and marketers. What about everyone else? So I want to ask you directly \u2014 what do you actually want to learn about Claude? What would make your life easier right now? Drop a YES in the comments, send me a DM, or visit hephosnexa.com. Tell me what you want \u2014 and I'll make it for you.",
+  "checklist": [
+    {
+      "label": "Video type selected",
+      "done": true
+    },
+    {
+      "label": "Brief written",
+      "done": true
+    },
+    {
+      "label": "Scene plan created",
+      "done": true
+    },
+    {
+      "label": "Scene plan approved",
+      "done": true
+    },
+    {
+      "label": "Text-to-image recipes created",
+      "done": true
+    },
+    {
+      "label": "Storyboard stills generated",
+      "done": true
+    },
+    {
+      "label": "Stills approved",
+      "done": true
+    },
+    {
+      "label": "Image-to-video recipes created",
+      "done": true
+    },
+    {
+      "label": "Video clips generated",
+      "done": true
+    },
+    {
+      "label": "Clips approved",
+      "done": true
+    },
+    {
+      "label": "Voiceover recipe created",
+      "done": true
+    },
+    {
+      "label": "Voiceover script approved",
+      "done": true
+    },
+    {
+      "label": "TTS voiceover generated",
+      "done": true
+    },
+    {
+      "label": "Review cut assembled",
+      "done": true
+    },
+    {
+      "label": "Final cut approved",
+      "done": true
+    }
+  ],
+  "review_outputs": [
+    {
+      "type": "review_cut",
+      "path": "Projects/want_to_learn_claude/outputs/review/review_cut.mp4",
+      "duration_seconds": 20.168,
+      "audio": "Projects/want_to_learn_claude/outputs/audio/voiceover.mp3",
+      "voiceover_speed": 1.3006743355811186,
+      "notes": "Review cut with voiceover at speed 1.3007x."
+    }
+  ],
+  "generations": [
+    {
+      "scene_id": "scene_001",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/want_to_learn_claude/recipes/storyboards/scene_001.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_103637.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/stills/scene_001.png"
+      ],
+      "decision": "pending_review",
+      "notes": "Storyboard still generated; awaiting review before image-to-video."
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/want_to_learn_claude/recipes/storyboards/scene_002.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_103926.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/stills/scene_002.png"
+      ],
+      "decision": "pending_review",
+      "notes": "Storyboard still generated; awaiting review before image-to-video."
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/want_to_learn_claude/recipes/storyboards/scene_003.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_104150.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/stills/scene_003.png"
+      ],
+      "decision": "pending_review",
+      "notes": "Storyboard still generated; awaiting review before image-to-video."
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "text_to_image",
+      "model": "fal-ai/flux/schnell",
+      "recipe": "Projects/want_to_learn_claude/recipes/storyboards/scene_004.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_104414.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/stills/scene_004.png"
+      ],
+      "decision": "pending_review",
+      "notes": "Storyboard still generated; awaiting review before image-to-video."
+    },
+    {
+      "scene_id": "scene_001",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v1.6/standard/image-to-video",
+      "recipe": "Projects/want_to_learn_claude/recipes/image_to_video/scene_001.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_105622.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/clips/scene_001.mp4"
+      ],
+      "decision": "pending_review",
+      "notes": "Animated clip generated from approved storyboard still."
+    },
+    {
+      "scene_id": "scene_002",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v1.6/standard/image-to-video",
+      "recipe": "Projects/want_to_learn_claude/recipes/image_to_video/scene_002.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_105717.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/clips/scene_002.mp4"
+      ],
+      "decision": "pending_review",
+      "notes": "Animated clip generated from approved storyboard still."
+    },
+    {
+      "scene_id": "scene_003",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v1.6/standard/image-to-video",
+      "recipe": "Projects/want_to_learn_claude/recipes/image_to_video/scene_003.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_105818.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/clips/scene_003.mp4"
+      ],
+      "decision": "pending_review",
+      "notes": "Animated clip generated from approved storyboard still."
+    },
+    {
+      "scene_id": "scene_004",
+      "mode": "image_to_video",
+      "model": "fal-ai/kling-video/v1.6/standard/image-to-video",
+      "recipe": "Projects/want_to_learn_claude/recipes/image_to_video/scene_004.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_105945.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/clips/scene_004.mp4"
+      ],
+      "decision": "pending_review",
+      "notes": "Animated clip generated from approved storyboard still."
+    },
+    {
+      "scene_id": "voiceover",
+      "mode": "text_to_speech",
+      "model": "xai/tts/v1",
+      "recipe": "Projects/want_to_learn_claude/recipes/voiceover.json",
+      "output_json": "Projects/want_to_learn_claude/fal_results/fal_result_20260515_110524.json",
+      "media_files": [
+        "Projects/want_to_learn_claude/outputs/audio/voiceover.mp3"
+      ],
+      "decision": "approved",
+      "notes": "xAI TTS voiceover generated at 26.23s, tempo-adjusted to 1.30x to fit 20.17s review cut."
+    }
+  ]
+}

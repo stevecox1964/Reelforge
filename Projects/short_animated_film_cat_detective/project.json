@@ -1,0 +1,9 @@
+{
+  "project": "short_animated_film_cat_detective",
+  "video_type": "animated_story",
+  "aspect_ratio": "16:9",
+  "target_duration_seconds": 30,
+  "voiceover": true,
+  "created_at": "2026-05-28T05:24:37.426816+00:00",
+  "current_stage": "complete"
+}

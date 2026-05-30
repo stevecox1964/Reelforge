@@ -1,130 +1,97 @@
 # Codex Video Engine
 
-Codex Video Engine is an experimental FAL-powered video generation workspace. The target workflow is:
+A FAL-powered video generation workspace with a local web studio. Each project lives in its own folder under `Projects/<name>/` and walks through the same 5-step pipeline:
 
-```text
-thought -> brief -> scene plan -> storyboard stills -> image-to-video clips -> voiceover -> review cut
+```
+idea → scene plan → storyboards → clips → review cut
 ```
 
-The repo currently contains the working proof assets as docs, recipes, manifests, a general FAL runner, and a first-pass local studio UI. Generated media outputs are intentionally ignored by git.
+Paid stages are gated behind explicit approval in the UI.
 
-## Project Structure
+## Quick start
 
-```text
-.
-+-- Docs/
-|   +-- MediaGeneration/
-|       +-- assets/
-|       |   +-- references/          # Reference assets for future projects
-|       +-- briefs/                  # Project briefs generated from video ideas
-|       +-- manifests/               # Generation manifests and project state
-|       +-- outputs/                 # Local generated media, ignored except .gitkeep
-|       |   +-- image_to_video/
-|       |   +-- review/
-|       |   +-- text_to_image/
-|       |   +-- text_to_speech/
-|       |   +-- text_to_video/
-|       +-- recipes/                 # FAL request JSON by generation mode
-|       |   +-- image_to_video/
-|       |   +-- storyboards/
-|       |   +-- text_to_image/
-|       |   +-- text_to_speech/
-|       |   +-- text_to_video/
-|       +-- storyboards/             # Scene plans
-|       +-- templates/               # Starter manifest, brief, and scene templates
-|       +-- fal_video_generation_workflow.md
-|       +-- generation_types.md
-|       +-- jay_style_fal_pipeline.md
-|       +-- session_handoff_refactor_notes.md
-+-- Python/
-|   +-- scripts/
-|       +-- media/
-|       |   +-- fal_generate.py      # General FAL runner
-|       |   +-- fal_kandinsky_smoke.py
-|       |   +-- fetch_fal_result.py
-|       +-- studio/
-|           +-- server.py            # FastAPI local studio backend
-+-- web/
-|   +-- studio/                      # Local studio frontend
-+-- fetch_text_to_video_result.bat
-+-- run_fal.bat
-+-- run_studio.bat
-+-- run_text_to_video_now.bat
-+-- test_fal_key.bat
-+-- pyproject.toml
-+-- uv.lock
+```powershell
+.\run.bat
+```
+
+Opens the studio on http://127.0.0.1:8765/ and runs the durable worker in the background. Press Ctrl+C to stop both.
+
+Set your `FAL_KEY` in `.env` first:
+
+```
+FAL_KEY=your_key
+OPENAI_API_KEY=your_key   # only needed for openai/gpt-image-2 (text-in-image)
+```
+
+## Project layout
+
+```
+Projects/<name>/
+  project.json           # type, duration, aspect_ratio, current_stage
+  brief.md
+  scene_plan.json
+  recipes/
+    storyboards/scene_001.json ...
+    image_to_video/scene_001.json ...
+    voiceover.json
+  outputs/
+    stills/, clips/, audio/, review/
+  fal_results/           # raw FAL responses
+  manifest.json          # artifact index + cost estimate
+```
+
+## Repo layout
+
+```
+Projects/                # one folder per video project
+Python/scripts/
+  pipeline/              # stage scripts (create_project, generate_*, assemble_review, cost_report)
+  studio/                # FastAPI server + durable worker
+  migrate_projects.py    # one-shot Docs/MediaGeneration → Projects migration
+web/studio/              # vanilla JS frontend
+.studio/                 # SQLite job queue (gitignored)
+run.bat
+```
+
+## Workflow
+
+1. Click **New Project** in the studio, describe the video idea, pick duration + aspect ratio.
+2. **Review the scene plan**, edit any scene, click **Approve Plan**.
+3. **Generate Storyboards** — paid stills (Flux Schnell by default; use gpt-image-2 if text must appear in-frame).
+4. **Approve Storyboards** to unlock clip animation.
+5. **Generate Clips** — paid image-to-video (Kling V3 by default).
+6. **Approve Clips**, then generate voiceover (FAL TTS).
+7. **Assemble Review Cut** — local ffmpeg concat with atempo-matched voiceover.
+
+The current stage and approval status live in `project.json` and `manifest.json`. Job queue state survives server/worker/browser restarts (SQLite at `.studio/studio.sqlite3`).
+
+## CLI fallback
+
+Every stage works headless too:
+
+```powershell
+python Python/scripts/pipeline/create_project.py --idea "tiny otter making toast" --aspect 9:16
+python Python/scripts/pipeline/generate_storyboards.py tiny_otter_making_toast
+python Python/scripts/pipeline/generate_clips.py tiny_otter_making_toast
+python Python/scripts/pipeline/generate_voiceover.py tiny_otter_making_toast
+python Python/scripts/pipeline/assemble_review.py tiny_otter_making_toast
+python Python/scripts/pipeline/cost_report.py tiny_otter_making_toast
 ```
 
 ## Setup
-
-Install dependencies with `uv`:
 
 ```powershell
 uv sync
 ```
 
-Create a local `.env` file with your FAL key:
+Pre-requisites: Python 3.11+, ffmpeg on PATH, a FAL key.
 
-```text
-FAL_KEY=your_fal_key_here
-```
+## Migration from the old layout
 
-`.env` is ignored by git.
-
-To verify authentication:
+The old `Docs/MediaGeneration/{briefs,manifests,recipes,outputs,storyboards}/` tree has been migrated into `Projects/<name>/`. To re-run the migration on a fresh checkout that still has the old tree:
 
 ```powershell
-.\test_fal_key.bat
+python Python/scripts/migrate_projects.py
 ```
 
-## Running The FAL Runner
-
-Use `run_fal.bat` with a model, recipe JSON, output folder, and project name:
-
-```powershell
-.\run_fal.bat --model fal-ai/flux/schnell --args Docs\MediaGeneration\recipes\text_to_image\tiny_robot_baker_scene_001.json --out Docs\MediaGeneration\outputs\text_to_image --project tiny_robot_baker
-```
-
-For image-to-video jobs that need a local still uploaded first:
-
-```powershell
-.\run_fal.bat --model fal-ai/kling-video/v3/standard/image-to-video --args Docs\MediaGeneration\recipes\image_to_video\tiny_robot_baker_scene_001.json --upload-file start_image_url=Docs\MediaGeneration\outputs\text_to_image\tiny_robot_baker\scene_001.jpg --out Docs\MediaGeneration\outputs\image_to_video --project tiny_robot_baker
-```
-
-Generated assets should use project-specific folders:
-
-```text
-Docs/MediaGeneration/outputs/text_to_image/<project>/
-Docs/MediaGeneration/outputs/image_to_video/<project>/
-Docs/MediaGeneration/outputs/text_to_speech/<project>/
-Docs/MediaGeneration/outputs/review/<project>/
-```
-
-## Running The Studio
-
-Start the local studio:
-
-```powershell
-.\run_studio.bat
-```
-
-The studio has a SQLite project/job registry and a first-pass one-thought project flow. The raw manual job launcher was removed to avoid accidental paid FAL calls.
-
-## Current Proofs
-
-Two end-to-end proofs were generated locally:
-
-- Smart Websites For Small Companies
-- Tiny Robot Baker
-
-Their briefs, scene plans, recipes, and manifests are tracked in git. The generated MP4, JPG, MP3, and FAL result JSON files are local-only under `Docs/MediaGeneration/outputs/`.
-
-## Next Refactor Targets
-
-1. Make project-specific output folders the only path everywhere.
-2. Add manifest-writing helpers so FAL results do not require manual patching.
-3. Add `scripts/create_video_project.py` to create briefs, scene plans, recipes, and manifests from a simple thought.
-4. Add stage scripts: `generate_storyboards.py`, `generate_clips.py`, `generate_voiceover.py`, and `assemble_review.py`.
-5. Keep paid stages gated: storyboard approval, clip approval, voiceover approval, and assembly approval.
-
-See `Docs/MediaGeneration/session_handoff_refactor_notes.md` for the current handoff notes.
+The migration is idempotent; missing source files (e.g., deleted older outputs) are reported but don't fail the run.

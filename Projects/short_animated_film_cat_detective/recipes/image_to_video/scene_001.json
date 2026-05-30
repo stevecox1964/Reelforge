@@ -1,0 +1,7 @@
+{
+  "prompt": "Preserve the input image and design. slow controlled push in. Animate this beat: Hook beat for: A short animated film about a cat detective solving a cozy mystery. Stable composition, coherent motion, no text, no logos, no watermark.",
+  "duration": "5",
+  "aspect_ratio": "16:9",
+  "generate_audio": false,
+  "negative_prompt": "blur, distortion, warped subjects, unreadable text, logos, watermark, flicker, low quality"
+}

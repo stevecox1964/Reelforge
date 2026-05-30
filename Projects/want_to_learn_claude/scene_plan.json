@@ -1,0 +1,70 @@
+{
+  "project": "want_to_learn_claude",
+  "video_type": "explainer",
+  "aspect_ratio": "9:16",
+  "target_duration_seconds": 20,
+  "platforms": ["instagram", "facebook", "tiktok", "linkedin"],
+  "scenes": [
+    {
+      "id": "scene_001",
+      "title": "Hook",
+      "duration_seconds": 5,
+      "purpose": "hook",
+      "story_beat": "Do you want to learn Claude Code?",
+      "visual": "Bold white text 'DO YOU WANT TO LEARN CLAUDE CODE?' punches onto screen over a deep dark navy background. A hand holds a glowing smartphone showing a soft blue AI chat interface. High contrast. Vertical 9:16 social video energy. No logos.",
+      "camera_motion": "static tight frame, text animates in with impact",
+      "style_notes": "high contrast dark background, bold white typography, dramatic glow, modern social video aesthetic, no logos, no watermarks",
+      "voiceover": "Do you want to learn Claude Code? Because if you don't know what it is yet — you need to.",
+      "text_overlay": "DO YOU WANT TO LEARN CLAUDE CODE?",
+      "on_screen_text": "DO YOU WANT TO LEARN CLAUDE CODE?",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_002",
+      "title": "The Gap",
+      "duration_seconds": 5,
+      "purpose": "problem",
+      "story_beat": "99% of Claude content isn't made for everyday people.",
+      "visual": "A frustrated everyday person sits at a laptop. Floating glowing labels reading 'FOR DEVELOPERS' and 'FOR MARKETERS' surround them like walls, blocking them out. They look excluded. Bold text overlay 'BUT WHAT ABOUT YOU?' Vertical 9:16. Warm ambient light.",
+      "camera_motion": "slow cinematic push in toward subject",
+      "style_notes": "warm ambient lighting, relatable B-roll aesthetic, bold white text overlay, modern clean composition, no logos, no watermarks",
+      "voiceover": "99% of the content out there about Claude is made for coders and marketers. What about everyone else?",
+      "text_overlay": "BUT WHAT ABOUT YOU?",
+      "on_screen_text": "BUT WHAT ABOUT YOU?",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_003",
+      "title": "The Question",
+      "duration_seconds": 5,
+      "purpose": "engagement",
+      "story_beat": "What do YOU want to learn about Claude?",
+      "visual": "Direct-to-camera creator energy. Clean soft gradient background in warm amber and cream tones. Bold white text 'WHAT DO YOU WANT TO LEARN?' centered upper frame. Professional home studio lighting. Warm confident expression. Vertical 9:16 social format.",
+      "camera_motion": "steady medium close-up, subtle slow zoom in",
+      "style_notes": "warm confident studio lighting, clean gradient background, bold white typography, direct eye contact, modern creator aesthetic, no logos, no watermarks",
+      "voiceover": "So I want to ask you directly — what do you actually want to learn about Claude? What would make your life easier right now?",
+      "text_overlay": "WHAT DO YOU WANT TO LEARN?",
+      "on_screen_text": "WHAT DO YOU WANT TO LEARN?",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    },
+    {
+      "id": "scene_004",
+      "title": "CTA",
+      "duration_seconds": 5,
+      "purpose": "call_to_action",
+      "story_beat": "Comment YES, DM me, visit hephosnexa.com.",
+      "visual": "Instagram-style comment section UI with YES comments appearing one by one. A DM notification slides in from the right. Bold white text 'hephosnexa.com' displayed prominently at bottom third. Clean dark background with modern app UI aesthetic. Energetic and clear.",
+      "camera_motion": "animated graphic sequence with staggered reveals",
+      "style_notes": "dark background, modern app UI aesthetic, bright accent comment bubbles, bold white URL text, energetic CTA energy, no real brand logos, no watermarks",
+      "voiceover": "Drop a YES in the comments, send me a DM, or visit hephosnexa.com. Tell me what you want — and I'll make it for you.",
+      "text_overlay": "YES in comments | DM me | hephosnexa.com",
+      "on_screen_text": "YES | DM ME | hephosnexa.com",
+      "generation_mode": "text_to_image_then_image_to_video",
+      "status": "planned"
+    }
+  ],
+  "voiceover_full": "Do you want to learn Claude Code? Because if you don't know what it is yet — you need to. 99% of the content out there about Claude is made for coders and marketers. What about everyone else? So I want to ask you directly — what do you actually want to learn about Claude? What would make your life easier right now? Drop a YES in the comments, send me a DM, or visit hephosnexa.com. Tell me what you want — and I'll make it for you."
+}
