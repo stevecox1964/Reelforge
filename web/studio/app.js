@@ -316,6 +316,25 @@ let jsonEditorOpen = false;
 function initScenePlanCard() {
   document.getElementById("btn-approve-plan").addEventListener("click", approvePlan);
   document.getElementById("btn-edit-json").addEventListener("click", toggleJson);
+
+  // Auto-save scene edits the moment a field loses focus, so generation always
+  // runs off the latest text (mirrors the model-select auto-save). focusout is
+  // used because blur doesn't bubble; the cards are re-rendered dynamically.
+  document.getElementById("scenes-list").addEventListener("focusout", (e) => {
+    if (e.target.classList?.contains("scene-input")) saveScenePlan();
+  });
+}
+
+async function saveScenePlan() {
+  if (!S.project || jsonEditorOpen) return;
+  const scenes = collectScenes();
+  S.scenePlan = scenes;
+  try {
+    await put(`/api/projects/${S.project}/scene-plan`, { scenes });
+    document.getElementById("plan-msg").textContent = "";
+  } catch (err) {
+    document.getElementById("plan-msg").textContent = `Couldn't save edit: ${err.message}`;
+  }
 }
 
 function toggleJson() {
@@ -669,7 +688,7 @@ function showJobProgress(stage, job, label) {
   el.style.display = "";
   el.innerHTML = `
     <div class="job-bar">
-      <div class="spinner"></div>
+      <div class="spinner" id="${stage}-spinner"></div>
       <div class="job-info">
         <div class="job-lbl">${esc(label)}</div>
         <div class="job-id">Job ${(job.job_id || "").slice(0, 8)}…</div>
@@ -691,6 +710,16 @@ function updateJobProgress(stage, job) {
   if (out && job.output) out.textContent = job.output.slice(-2000);
 }
 
+// Stop the spinner and leave a static result icon, so a finished card actually
+// reads as finished instead of spinning forever.
+function markJobFinished(stage, status) {
+  const dot = document.getElementById(`${stage}-spinner`);
+  if (!dot) return;
+  dot.classList.remove("spinner");
+  dot.classList.add("job-dot", status === "completed" ? "is-done" : "is-error");
+  dot.textContent = status === "completed" ? "✓" : "✕";
+}
+
 function pollJob(stage, jobId, onDone) {
   const timer = setInterval(async () => {
     try {
@@ -698,9 +727,11 @@ function pollJob(stage, jobId, onDone) {
       updateJobProgress(stage, job);
       if (job.status === "completed") {
         clearInterval(timer);
+        markJobFinished(stage, "completed");
         onDone();
       } else if (job.status === "failed" || job.status === "interrupted") {
         clearInterval(timer);
+        markJobFinished(stage, "failed");
         const el = document.getElementById(`${stage}-progress`);
         if (el) el.insertAdjacentHTML("beforeend",
           `<div class="job-error">Job ${job.status}. Check output above.</div>`);

@@ -56,7 +56,7 @@ run.bat
 ## Workflow
 
 1. Click **New Project** in the studio, describe the video idea, pick duration + aspect ratio.
-2. **Review the scene plan**, edit any scene, click **Approve Plan**.
+2. **Review the scene plan**, edit any scene (edits auto-save on blur, so regeneration always uses your latest text), click **Approve Plan**.
 3. **Generate Storyboards** — paid stills (Flux Schnell by default; use gpt-image-2 if text must appear in-frame).
 4. **Approve Storyboards** to unlock clip animation.
 5. **Generate Clips** — paid image-to-video (Kling V3 by default).
